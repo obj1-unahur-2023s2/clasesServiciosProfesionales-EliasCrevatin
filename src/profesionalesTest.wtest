@@ -1,0 +1,23 @@
+import profesionales.*
+import universidades.*
+import empresas.*
+
+describe"Test De Empresa "{
+	// declaracion de objetos
+	
+	const sanMartin = new Universidad(provincia="Buenos Aires", honorariosRecomendados=3500)
+	const unaHur = new Universidad(provincia="Buenos Aires", honorariosRecomendados=4500)
+	
+	const juana = new ProfesionalVinculado(universidad=sanMartin)
+	const gerardo = new ProfesionalVinculado(universidad=unaHur)
+	
+	const PALUSeaFood = new Empresa(honorariosDeReferencia=3000,profesionales=#{juana,gerardo})
+	
+	method initialize(){}
+	
+	//test
+	test "En UnaHur estudio solo un profesional"{	
+		assert.equals(1,PALUSeaFood.cuantosEstudiaronEn(unaHur))
+	}
+	
+}
